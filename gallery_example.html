@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Gallery Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+
+#galleryArea {
+  //position: relative;
+  //margin: 0;
+  margin-top: 92px; // 92px
+
+/* bring your own prefixes */
+}
+.galleryRow {
+    margin-left: 5vw;
+    padding: 0;
+}
+.galleryRowItem {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+
+}
+.galleryRowItem img {
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+
+.main-content .photos .photo-item img {
+  margin-bottom: 0px;
+}
+  </style>
+</head>
+
+<body onload="whenPageLoaded()">
+
+
+  <div class="site-wrap">
+
+
+
+    <!--==========================
+    Header
+  ============================-->
+    <header id="header">
+
+    </header><!-- #header -->
+
+
+        <div class="photos" id="galleryArea" >
+
+        </div>
+
+  <script src="jquery/jquery.min.js"></script>
+  <script src="jquery/jquery-migrate.min.js"></script>
+  <script src="jquery/jquery.fancybox.min.js"></script>
+  <script src="js/gallery-test.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    var galleryHTML = "";
+
+    function whenPageLoaded() {
+      var x = window.innerWidth;
+      x=x-(window.innerWidth/10);
+      //console.log(window.innerWidth+", "+ x);
+      // document.getElementById("galleryArea").innerHTML = img_gallery_tile_flex("medium");
+      // calculate_image_rows(x, 270);
+      calculate_image_rows(1200, 200);
+      document.getElementById("galleryArea").innerHTML = img_gallery_grid();
+      setupFancybox();
+    }
+  function setupFancybox() {
+    $("[data-fancybox]").fancybox({
+      buttons : [
+        'zoom',
+        'thumbs',
+        'slideShow',
+        'close'
+      ],
+      idleTime : 4,
+      animationEffect : "zoom",
+    });
+  }
+  </script>
+  <!-- <script src="js/gallery1.js"></script> -->
+<script>
+
+
+</script>
+</body>
+
+
+</html>
