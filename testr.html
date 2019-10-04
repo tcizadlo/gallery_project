@@ -8,23 +8,42 @@
         position: relative;
         display: inline-block; /* Make the width of box same as image */
     }
+    .box:hover .text {
+        color: white;
+        opacity: 1;
+        background-color: rgba(0,0,0,.6);
+        border-radius: 20px;
+    }
     .box .text{
         position: absolute;
         z-index: 999;
         margin: 0 auto;
         left: 0;
         right: 0;
-        top: 40%; /* Adjust this value to move the positioned div up and down */
+        top: 10%; /* Adjust this value to move the positioned div up and down */
         text-align: center;
-        width: 60%; /* Set the width of the positioned div */
+        width: 90%; /* Set the width of the positioned div */
+        opacity: 0;
     }
 </style>
-</head> 
+</head>
 <body>
     <div class="box">
-        <img src="images/kites.jpg" alt="Flying Kites">
+        <img src="gallery-test/resized-1-far-horizons-nz-house-garden-january-2004-cover-copy.jpg" width=300px alt="Flying Kites">
         <div class="text">
-            <h1>Flying Kites</h1>
+            <h1>Flying Kites are enough words to test</h1>
+        </div>
+    </div>
+    <div class="box" style="width: 200px;">
+        <img src="gallery-test/resized-1-far-horizons-nz-house-garden-january-2004-cover-copy.jpg" width=200px alt="Flying Kites">
+        <div class="text">
+            <h1>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur adipisicing.</h1>
+        </div>
+    </div>
+    <div class="box">
+        <img src="gallery-test/resized-1-far-horizons-nz-house-garden-january-2004-cover-copy.jpg" width=300px alt="Flying Kites">
+        <div class="text">
+            <h1>Lorem ipsum dolor sit.</h1>
         </div>
     </div>
 </body>

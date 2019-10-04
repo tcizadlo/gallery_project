@@ -53,11 +53,11 @@ function img_gallery_grid() {
 
     }}
     galleryHTML += ' <div class="galleryRowItem box_' + i +'"  style="padding: 0px; margin: 0px; width: ' + (galleryItems[i].width*galleryScaleArray[i]) + 'px;">';
-    galleryHTML += '  <a href="' + galleryItems[i].src + '" class="photo-item" data-fancybox="gallery" data-caption="' + galleryItems[i].title + '">';
+    galleryHTML += '  <a href="' + galleryItems[i].src + '" class="photo-item" data-fancybox="iframe" data-caption="' + galleryItems[i].title + '">';
     galleryHTML += '   <img src="' + galleryItems[i].msrc + '" alt="Image" class="img-fluid" style="height: ' + galleryItems[i].height*galleryScaleArray[i] + 'px;">';
     galleryHTML += '   <div class="photo-text-more">';
     galleryHTML += '       <h3 class="heading" style="background-color: rgba(0, 0, 0, 0.6);">' + galleryItems[i].title + '</h3>';
-    galleryHTML += '      <span class="icon icon-search"></span>';
+    // galleryHTML += '      <span class="icon icon-search"></span>';
     galleryHTML += '    </div>';
     galleryHTML += '  </a>';
     galleryHTML += '  </div>';

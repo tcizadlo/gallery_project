@@ -3,12 +3,12 @@ from slugify import slugify
 import numpy as np
 import cv2
 import imutils
-imageNames = open("sortedPicureNames.txt", "r")
-captions = open("captions.txt", "r")
+imageNames = open("/Users/tcizadlo/raw-gallery-test/PictureNames.txt", "r")
+#captions = open("captions.txt", "r")
 
-galleryName = "gallery-test"
+galleryName = "/Users/tcizadlo/raw-gallery-test/gallery-test2"
 imgNameArray = imageNames.readlines();
-captionsArray = captions.readlines();
+#captionsArray = captions.readlines();
 tempResizedName = ""
 tempThumbName = ""
 import subprocess
@@ -33,27 +33,27 @@ for x in range(0, Nitems):
 	tempResizedName = "resized-" + replaceExtension(Newline,"jpg")
 	tempThumbName = "thumbnail-" + replaceExtension(Newline,"jpg")
 	img = cv2.imread(imgNameArray[x])
-	print(str(x+1))
+	print(imgNameArray[x], img.shape[1], img.shape[0])
 	if img.shape[1] > img.shape[0]:
-		if img.shape[1] > 1500:
-			resized = imutils.resize(img, width = 1500)
+		if img.shape[1] > 1800:
+			resized = imutils.resize(img, width = 1800)
 			print("case 1 ", imgNameArray[x], tempResizedName, tempThumbName)
 		elif img.shape[1] < 1000:
-			resized = imutils.resize(img, width = 1000); # enlarge small images a little
+			resized = imutils.resize(img, width = 1200); # enlarge small images a little
 		else:
 			resized = img;
 	else: #(img.shape[1] <= img.shape[0])
-		if img.shape[0] > 1500:
-			resized = imutils.resize(img, height = 1500)
+		if img.shape[0] > 1800:
+			resized = imutils.resize(img, height = 1800)
 			print("case 2 ", imgNameArray[x], tempResizedName, tempThumbName)
 		elif img.shape[0] < 1000:
-			resized = imutils.resize(img, width = 1000); # enlarge small images a little
+			resized = imutils.resize(img, width = 1200); # enlarge small images a little
 		else:
 			resized = img;
 
 	thumbnail = imutils.resize(img, height = 180) # all thumbnails are ~180
-	cv2.imwrite('./'+ galleryName + '/' + tempResizedName, resized)
-	cv2.imwrite('./'+ galleryName + '/' + tempThumbName, thumbnail)
+	cv2.imwrite(galleryName + '/' + tempResizedName, resized)
+	cv2.imwrite(galleryName + '/' + tempThumbName, thumbnail)
 	# get dimensions of image
 
 	height = str(thumbnail.shape[0])
@@ -73,24 +73,29 @@ for x in range(0, Nitems):
 	#echo msrc: \'gallery_imgs/$thumbnail_img\',
 	#echo title: \'Image Caption\'
 	#echo },
-	captionsArray[x] = captionsArray[x].rstrip()
-	captionsArray[x] = captionsArray[x].replace("\"", "&quot;")
-	captionsArray[x] = captionsArray[x].replace("\'", "&apos;")
+
+
+	#captionsArray[x] = captionsArray[x].rstrip()
+	#captionsArray[x] = captionsArray[x].replace("\"", "&quot;")
+	#captionsArray[x] = captionsArray[x].replace("\'", "&apos;")
+
+
 	imgScript+='            {\n'
 	imgScript+='               src: ' + "\'" + galleryName + '/' + tempResizedName + '\'' + ',\n'
 	imgScript+='               width: ' + width  + ',\n'
 	imgScript+='               height: ' + height  + ',\n'
 	imgScript+='               msrc: ' + "\'" + galleryName + '/' + tempThumbName + '\'' + ',\n'
-	imgScript+='               title: ' + "\'" + captionsArray[x] + '\'\n'
+	#imgScript+='               title: ' + "\'" + captionsArray[x] + '\'\n'
+	imgScript+='               title: ' + "\'" + imgNameArray[x] + '\'\n'
 	imgScript+='             },\n'
 
 
 #print Nitems
 
 imgScript = imgScript[:-2] + '\n             ]\n' #erase the last ,\n and close bracket
-captions.close()
+#captions.close()
 imageNames.close()
-galleryJSname = "./" + galleryName + '/' + galleryName + ".js"
+galleryJSname = galleryName + ".js"
 jsFile = open (galleryJSname,"w")
 jsFile.write(imgScript)
 jsFile.close()
