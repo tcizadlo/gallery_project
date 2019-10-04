@@ -53,7 +53,7 @@ function img_gallery_grid() {
 
     }}
     galleryHTML += ' <div class="galleryRowItem box_' + i +'"  style="padding: 0px; margin: 0px; width: ' + (galleryItems[i].width*galleryScaleArray[i]) + 'px;">';
-    galleryHTML += '  <a href="' + galleryItems[i].src + '" class="photo-item" data-fancybox="iframe" data-caption="' + galleryItems[i].title + '">';
+    galleryHTML += '  <a href="' + galleryItems[i].src + '" class="photo-item" data-fancybox="gallery" data-caption="' + galleryItems[i].title + '">';
     galleryHTML += '   <img src="' + galleryItems[i].msrc + '" alt="Image" class="img-fluid" style="height: ' + galleryItems[i].height*galleryScaleArray[i] + 'px;">';
     galleryHTML += '   <div class="photo-text-more">';
     galleryHTML += '       <h3 class="heading" style="background-color: rgba(0, 0, 0, 0.6);">' + galleryItems[i].title + '</h3>';
@@ -77,7 +77,7 @@ function img_gallery_grid() {
 galleryRowArray = new Array(galleryItems.length);
 galleryScaleArray = new Array(galleryItems.length);
 
-var imageGap = 4; // matches the "mysterious 4px gap between images" padding for individual image boxes
+var imageGap =4; // matches the "mysterious 4px gap between images" padding for individual image boxes
 
 function calculate_image_rows(row_width_target, height_target) {
 
@@ -124,7 +124,7 @@ function calculate_image_rows(row_width_target, height_target) {
         galleryRowArray[j] = current_row;
         galleryScaleArray[j] = row_scale*heightScale;
       }
-
+      //console.log(number_images_in_row+", "+row_width_sum);
       number_images_in_row = 0;
       current_row += 1;
       row_width_sum = 0;

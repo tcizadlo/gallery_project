@@ -57,7 +57,7 @@ var galleryItems = [
              },
             {
                src: 'gallery-test2/resized-img-0930.jpg',
-               width: 840,
+               width: 834,
                height: 180,
                msrc: 'gallery-test2/thumbnail-img-0930.jpg',
                title: 'IMG_0930.jpg'
