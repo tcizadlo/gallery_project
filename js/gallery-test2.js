@@ -76,8 +76,15 @@ var galleryItems = [
                msrc: 'gallery-test2/thumbnail-img-0951.jpg',
                title: 'IMG_0951.jpg'
              },
+             {
+                src: 'gallery-test2/thumbnail-7-progressive-building-april-may-2002-p-36-make-it-monolithic-copy.jpg',
+                width: 300,
+                height: 264,
+                msrc: 'gallery-test2/thumbnail-7-progressive-building-april-may-2002-p-36-make-it-monolithic-copy.jpg',
+                title: 'Test of different ehight image'
+              },
             {
-               src: 'gallery-test2/resized-img-0957.jpg',
+              src: 'gallery-test2/resized-img-0957.jpg',
                width: 135,
                height: 180,
                msrc: 'gallery-test2/thumbnail-img-0957.jpg',

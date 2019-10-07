@@ -3,10 +3,11 @@ from slugify import slugify
 import numpy as np
 import cv2
 import imutils
-imageNames = open("/Users/tcizadlo/raw-gallery-test/PictureNames.txt", "r")
+directoryName = "/Users/tcizadlo/raw-gallery-test/"
+imageNames = open(directoryName+"PictureNames.txt", "r")
 #captions = open("captions.txt", "r")
-
-galleryName = "/Users/tcizadlo/raw-gallery-test/gallery-test2"
+# seperate file name and directory so that local directory names can be in jsfile
+galleryName = "gallery-test2"
 imgNameArray = imageNames.readlines();
 #captionsArray = captions.readlines();
 tempResizedName = ""
@@ -52,8 +53,8 @@ for x in range(0, Nitems):
 			resized = img;
 
 	thumbnail = imutils.resize(img, height = 180) # all thumbnails are ~180
-	cv2.imwrite(galleryName + '/' + tempResizedName, resized)
-	cv2.imwrite(galleryName + '/' + tempThumbName, thumbnail)
+	cv2.imwrite(directoryName+galleryName + '/' + tempResizedName, resized)
+	cv2.imwrite(directoryName+galleryName + '/' + tempThumbName, thumbnail)
 	# get dimensions of image
 
 	height = str(thumbnail.shape[0])
@@ -95,7 +96,7 @@ for x in range(0, Nitems):
 imgScript = imgScript[:-2] + '\n             ]\n' #erase the last ,\n and close bracket
 #captions.close()
 imageNames.close()
-galleryJSname = galleryName + ".js"
+galleryJSname = directoryName+galleryName + ".js"
 jsFile = open (galleryJSname,"w")
 jsFile.write(imgScript)
 jsFile.close()
