@@ -11,21 +11,33 @@
   <link rel="stylesheet" href="css/main.css">
   <style>
 body {
-  background-color: linen;
+  background-color: darkgrey;
+  margin: 0;
 }
-#galleryArea {
-  //position: relative;
-  //margin: 0;
-  margin-top: 0px; // 92px
+.header {
+  position: fixed;
+  top: 0;
+ font-size: 20px;
+ color: #FFFFFF;
+ border: 1px dashed black;
+ height: 90px;
+ width: 100%;
+ text-align: center;
+ background-color: black;
+ z-index: 2;
+}
 
-/* bring your own prefixes */
+
+#galleryArea {
+  margin-top: 94px;
+  padding-left: calc(5vw - 15px); //constant scroll bar
 }
 .galleryRow {
-    margin-left: 5vw;
-    padding: 0;
+    margin: 0;
+
 }
 .galleryRowItem {
-  display: inline-block;
+  //display: inline-block;
   max-width: 100%;
   height: auto;
 
@@ -33,48 +45,49 @@ body {
 .galleryRowItem img {
   max-width: 100%;
   height: auto;
-  margin: 0;
-  padding: 0;
+
+  //background-image: url("img/wood-image.jpg");
+
 }
 
 
 .main-content .photos .photo-item img {
   margin-bottom: 0px;
 }
-.header-bar {
-  height: 88px;
-  background: #000;
-  color: linen;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  //position: fixed;
-  top: 0; }
+.example-box {
+  width: 500px;
+  height: auto;
+  margin: auto;
+  border: 1px solid black;
+
+}
+
   </style>
 </head>
 
 <body onload="whenPageLoaded()">
 
 
-  <div class="site-wrap">
-
-
 
     <!--==========================
     Header
   ============================-->
-    <header id="header">
+<header id="header">
 
-        <div class="header-bar">
-          <h1>Image Gallery</h1>
 
-        </div>
 
-    </header><!-- #header -->
+
+</header> <!--  #header -->
+<div class="header ">
+  <h1>Image Gallery</h1>
+</div>
+
         <div id="galleryArea" >
 
         </div>
+  <div id="galleryArea2" class="example-box">
 
+  </div>
   <script src="jquery/jquery.min.js"></script>
   <script src="jquery/jquery-migrate.min.js"></script>
   <script src="jquery/jquery.fancybox.min.js"></script>
@@ -89,8 +102,10 @@ body {
       //console.log(window.innerWidth+", "+ x);
       // document.getElementById("galleryArea").innerHTML = img_gallery_tile_flex("medium");
       // calculate_image_rows(x, 270);
-      calculate_image_rows(x, 200);
+      calculate_image_rows(x, 180);
       document.getElementById("galleryArea").innerHTML = img_gallery_grid();
+      calculate_image_rows(500, 90);
+      document.getElementById("galleryArea2").innerHTML = img_gallery_grid();
       setupFancybox();
     }
   function setupFancybox() {

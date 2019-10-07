@@ -1,11 +1,12 @@
 .galleryRowItem{
     position: relative;
     display: inline-block; /* Make the width of box same as image */
+    z-index: 1;
 }
 
 .photo-text-more{
     position: absolute;
-    z-index: 999;
+    //z-index: 999;
     margin: 0 auto;
     left: 0;
     right: 0;

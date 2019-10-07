@@ -52,7 +52,7 @@ function img_gallery_grid() {
     galleryHTML += '<div class="row_' + galleryRowArray[i] + ' galleryRow">'; // new
 
     }}
-    galleryHTML += ' <div class="galleryRowItem box_' + i +'"  style="padding: 0px; margin: 0px; width: ' + (galleryItems[i].width*galleryScaleArray[i]) + 'px;">';
+    galleryHTML += ' <div class="galleryRowItem box_' + i +'"  width: ' + (galleryItems[i].width*galleryScaleArray[i]) + 'px;">';
     galleryHTML += '  <a href="' + galleryItems[i].src + '" class="photo-item" data-fancybox="gallery" data-caption="' + galleryItems[i].title + '">';
     galleryHTML += '   <img src="' + galleryItems[i].msrc + '" alt="Image" class="img-fluid" style="height: ' + galleryItems[i].height*galleryScaleArray[i] + 'px;">';
     galleryHTML += '   <div class="photo-text-more">';
@@ -79,22 +79,24 @@ galleryScaleArray = new Array(galleryItems.length);
 
 var imageGap =4; // matches the "mysterious 4px gap between images" padding for individual image boxes
 
-function calculate_image_rows(row_width_target, height_target) {
+function calculate_image_rows(row_width_target, image_height_target) {
 
   var row_width_sum = 0;
   var current_row = 0;
   var number_images_in_row = 0;
   var next_i = 0;
   var hackVar = 0;
-  if(row_width_target < 600) {
-    height_target = height_target/2;
+  if(row_width_target < 600) { //for small screens
+    image_height_target = image_height_target/2;
   }
 
-  heightScale = height_target/galleryItems[0].height;
   for (i = 0; i < galleryItems.length; i++) {
-    scaled_width = galleryItems[i].width * heightScale;
-    if((scaled_width + 20)/2 > row_width_target){
-      scaled_width = galleryItems[i].width * heightScale/2;
+    imgScale =1/galleryItems[i].height;
+    galleryItems[i].height*=imgScale;
+    galleryItems[i].width*=imgScale;
+    scaled_width = galleryItems[i].width * image_height_target;
+    if((scaled_width + 20)/2 > row_width_target){  //for small screens * wide thumbnail images
+      scaled_width = galleryItems[i].width * image_height_target/2;
     }
     row_width_sum += scaled_width;
     number_images_in_row += 1;
@@ -109,20 +111,20 @@ function calculate_image_rows(row_width_target, height_target) {
         next_i = -1; // need to back up i loop to pick up image not used
         number_images_in_row -=1;
         row_scale = (row_width_target - ((number_images_in_row-1)*imageGap)) / (row_width_sum - scaled_width);
-        hackVar=0;
+        extra_image=0;
       } else {
         //console.log("higher");
         row_scale = (row_width_target - ((number_images_in_row-1)*imageGap)) / row_width_sum;
         next_i = 0;
-        hackVar=1;
+        extra_image=1;
       }
       //console.log("i= "+i+" number_images_in_row= "+ number_images_in_row + " next_i= " + next_i);
-      for (j = (i - number_images_in_row+hackVar); j < (i+hackVar); j++) {
+      for (j = (i - number_images_in_row+extra_image); j < (i+extra_image); j++) {
         //console.log(j + ":  " + number_images_in_row  + ":  " + galleryItems[j].width);
         //galleryItems[j].width *= row_scale;
         //galleryItems[j].height *= row_scale;
         galleryRowArray[j] = current_row;
-        galleryScaleArray[j] = row_scale*heightScale;
+        galleryScaleArray[j] = row_scale*image_height_target;
       }
       //console.log(number_images_in_row+", "+row_width_sum);
       number_images_in_row = 0;
@@ -138,7 +140,7 @@ function calculate_image_rows(row_width_target, height_target) {
         //galleryItems[j].width *= row_scale;
         //galleryItems[j].height *= row_scale;
         galleryRowArray[j] = current_row;
-        galleryScaleArray[j] = 1.0*heightScale;
+        galleryScaleArray[j] = image_height_target;
       }
 
     }
