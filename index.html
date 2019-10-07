@@ -30,7 +30,7 @@ body {
 
 #galleryArea {
   margin-top: 94px;
-  padding-left: calc(5vw - 15px); //constant scroll bar
+  padding-left: calc(5vw); //constant scroll bar
 }
 .galleryRow {
     margin: 0;
@@ -55,7 +55,7 @@ body {
   margin-bottom: 0px;
 }
 .example-box {
-  width: 500px;
+  width: 501px;
   height: auto;
   margin: auto;
   border: 1px solid black;
@@ -97,14 +97,14 @@ body {
     var galleryHTML = "";
 
     function whenPageLoaded() {
-      var x = window.innerWidth;
-      x=x-(window.innerWidth/10);
-      //console.log(window.innerWidth+", "+ x);
+      var x = window.visualViewport.width;
+      x=x-(window.visualViewport.width/10);
+      console.log(window.visualViewport.width+", "+ x);
       // document.getElementById("galleryArea").innerHTML = img_gallery_tile_flex("medium");
       // calculate_image_rows(x, 270);
-      calculate_image_rows(x, 180);
+      calculate_image_rows(x, 200);
       document.getElementById("galleryArea").innerHTML = img_gallery_grid();
-      calculate_image_rows(500, 90);
+      calculate_image_rows(500, 70);
       document.getElementById("galleryArea2").innerHTML = img_gallery_grid();
       setupFancybox();
     }
