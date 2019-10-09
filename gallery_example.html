@@ -4,8 +4,11 @@
 <head>
   <title>Gallery Example</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
 
   <link rel="stylesheet" href="css/fancybox.min.css">
   <link rel="stylesheet" href="css/main.css">
@@ -87,6 +90,7 @@ body {
       var x = window.innerWidth;
       x=x-(window.innerWidth/10);
       //console.log(window.innerWidth+", "+ x);
+      console.log('x: ' + window.innerWidth + ', ' + x);
       // document.getElementById("galleryArea").innerHTML = img_gallery_tile_flex("medium");
       // calculate_image_rows(x, 270);
       calculate_image_rows(x, 200);
