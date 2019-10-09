@@ -1,109 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Gallery Example</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=yes"
-    />
 
-    <link rel="stylesheet" href="css/fancybox.min.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <style>
-      body {
-        background-color: darkgrey;
-        margin: 0;
-      }
-      .header {
-        position: fixed;
-        top: 0;
-        font-size: 20px;
-        color: #ffffff;
-        border: 1px dashed black;
-        height: 90px;
-        width: 100%;
-        text-align: center;
-        background-color: rgb(0, 0, 0);
-        z-index: 2;
-      }
+<head>
+  <title>Gallery Example</title>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+  <meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
 
-      #galleryArea {
-        margin-top: 94px;
-        padding-left: calc(5vw); //constant scroll bar
-      }
-      .galleryRow {
-        margin: 0;
-      }
-      .galleryRowItem {
-        //display: inline-block;
-        max-width: 100%;
-        height: auto;
-      }
-      .galleryRowItem img {
-        max-width: 100%;
-        height: auto;
+  <link rel="stylesheet" href="css/fancybox.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+body {
+  background-color: black;
+}
+#galleryArea {
+  //position: relative;
+  //margin: 0;
+  margin-top: 0px; // 92px
 
-        //background-image: url("img/wood-image.jpg");
-      }
+/* bring your own prefixes */
+}
+.galleryRow {
+    margin-left: 5vw;
+    padding: 0;
+}
+.galleryRowItem {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
 
-      .main-content .photos .photo-item img {
-        margin-bottom: 0px;
-      }
-      .example-box {
-        width: 370px;
-        height: auto;
-        margin: auto;
-        border: 1px solid black;
-      }
-    </style>
-  </head>
+}
+.galleryRowItem img {
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
 
-  <body onload="whenPageLoaded()">
+
+.main-content .photos .photo-item img {
+  margin-bottom: 0px;
+}
+.header-bar {
+  height: 92px;
+  background: #000;
+  color: linen;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  //position: fixed;
+  top: 0; }
+  </style>
+</head>
+
+<body onload="whenPageLoaded()">
+
+
+  <div class="site-wrap">
+
+
+
     <!--==========================
     Header
   ============================-->
-    <header id="header"></header>
-    <!--  #header -->
-    <div class="header ">
-      <h1>Image Gallery 2</h1>
-    </div>
+    <header id="header">
 
-    <div id="galleryArea"></div>
-    <!-- <div id="galleryArea2" class="example-box"></div> -->
-    <script src="jquery/jquery.min.js"></script>
-    <script src="jquery/jquery-migrate.min.js"></script>
-    <script src="jquery/jquery.fancybox.min.js"></script>
-    <script src="js/gallery-test2.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-      var galleryHTML = '';
+        <div class="header-bar">
+          <h1>Image Gallery</h1>
 
-      function whenPageLoaded() {
-        var x = window.visualViewport.width;
-        var xm = window.innerWidth;
-        x = x - window.visualViewport.width / 10;
-        xm = xm - window.innerWidth / 10;
-        console.log('xm: ' + window.innerWidth + ', ' + xm);
-        console.log('x: ' + window.visualViewport.width + ', ' + x);
-        // document.getElementById("galleryArea").innerHTML = img_gallery_tile_flex("medium");
-        // calculate_image_rows(x, 270);
-        calculate_image_rows(x, 200);
-        document.getElementById('galleryArea').innerHTML = img_gallery_grid();
-        // calculate_image_rows(370, 70);
-        // document.getElementById('galleryArea2').innerHTML = img_gallery_grid();
-        setupFancybox();
-      }
-      function setupFancybox() {
-        $('[data-fancybox]').fancybox({
-          buttons: ['zoom', 'thumbs', 'slideShow', 'close'],
-          idleTime: 4,
-          loop: true,
-          animationEffect: 'zoom'
-        });
-      }
-    </script>
-    <!-- <script src="js/gallery1.js"></script> -->
-    <script></script>
-  </body>
+        </div>
+
+    </header><!-- #header -->
+        <div id="galleryArea" >
+
+        </div>
+
+  <script src="jquery/jquery.min.js"></script>
+  <script src="jquery/jquery-migrate.min.js"></script>
+  <script src="jquery/jquery.fancybox.min.js"></script>
+  <script src="js/gallery-test2.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    var galleryHTML = "";
+
+    function whenPageLoaded() {
+      var x = window.innerWidth;
+      x=x-(window.innerWidth/10);
+      //console.log(window.innerWidth+", "+ x);
+      console.log('x: ' + window.innerWidth + ', ' + x);
+      // document.getElementById("galleryArea").innerHTML = img_gallery_tile_flex("medium");
+      // calculate_image_rows(x, 270);
+      calculate_image_rows(x, 200);
+      document.getElementById("galleryArea").innerHTML = img_gallery_grid();
+      setupFancybox();
+    }
+  function setupFancybox() {
+    $("[data-fancybox]").fancybox({
+      buttons : [
+        'zoom',
+        'thumbs',
+        'slideShow',
+        'close'
+      ],
+      idleTime : 4,
+      loop: true,
+      animationEffect : "zoom",
+    });
+  }
+  </script>
+  <!-- <script src="js/gallery1.js"></script> -->
+<script>
+
+
+</script>
+</body>
+
+
 </html>
