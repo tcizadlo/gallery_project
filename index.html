@@ -53,6 +53,14 @@ body {
   text-align: center;
   //position: fixed;
   top: 0; }
+
+  .example-box {
+        width: 370px;
+        height: auto;
+        margin: auto;
+        border: 1px solid black;
+      }
+
   </style>
 </head>
 
@@ -77,7 +85,7 @@ body {
         <div id="galleryArea" >
 
         </div>
-
+        <div id="galleryArea2" class="example-box"></div>
   <script src="jquery/jquery.min.js"></script>
   <script src="jquery/jquery-migrate.min.js"></script>
   <script src="jquery/jquery.fancybox.min.js"></script>
@@ -95,6 +103,8 @@ body {
       // calculate_image_rows(x, 270);
       calculate_image_rows(x, 200);
       document.getElementById("galleryArea").innerHTML = img_gallery_grid();
+      calculate_image_rows(370, 70);
+      document.getElementById('galleryArea2').innerHTML = img_gallery_grid();
       setupFancybox();
     }
   function setupFancybox() {
