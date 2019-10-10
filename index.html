@@ -20,11 +20,12 @@ body {
   //position: relative;
   //margin: 0;
   margin-top: 0px; // 92px
+  padding-left: calc(5vw); //constant scroll bar  
 
 /* bring your own prefixes */
 }
 .galleryRow {
-    margin-left: 5vw;
+    //margin-left: 5vw;
     padding: 0;
 }
 .galleryRowItem {
@@ -68,9 +69,6 @@ body {
 
 
   <div class="site-wrap">
-
-
-
     <!--==========================
     Header
   ============================-->
@@ -82,10 +80,9 @@ body {
         </div>
 
     </header><!-- #header -->
-        <div id="galleryArea" >
-
-        </div>
+        <div id="galleryArea" ></div>
         <div id="galleryArea2" class="example-box"></div>
+
   <script src="jquery/jquery.min.js"></script>
   <script src="jquery/jquery-migrate.min.js"></script>
   <script src="jquery/jquery.fancybox.min.js"></script>
@@ -95,18 +92,10 @@ body {
     var galleryHTML = "";
 
     function whenPageLoaded() {
-      var x = window.innerWidth;
-      x=x-(window.innerWidth/10);
-      //console.log(window.innerWidth+", "+ x);
-      console.log('x: ' + window.innerWidth + ', ' + x);
-      // document.getElementById("galleryArea").innerHTML = img_gallery_tile_flex("medium");
-      // calculate_image_rows(x, 270);
-      calculate_image_rows(x, 200);
-      document.getElementById("galleryArea").innerHTML = img_gallery_grid();
-      calculate_image_rows(300, 70);
-      document.getElementById('galleryArea2').innerHTML = img_gallery_grid();
+      whenScreenSizeChanged();
       setupFancybox();
     }
+
   function setupFancybox() {
     $("[data-fancybox]").fancybox({
       buttons : [
