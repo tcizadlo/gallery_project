@@ -14,10 +14,10 @@ function whenScreenSizeChanged() {
   console.log('x: ' + window.innerWidth + ', ' + x);
   // document.getElementById("galleryArea").innerHTML = img_gallery_tile_flex("medium");
   // calculate_image_rows(x, 270);
-  calculate_image_rows(x, 200);
+
+  galleryHeight = calculate_image_rows(x, 200);
+  console.log('gallery size:  ' + x + ' X ' + galleryHeight);
   document.getElementById('galleryArea').innerHTML = img_gallery_grid();
-  calculate_image_rows(300, 70);
-  document.getElementById('galleryArea2').innerHTML = img_gallery_grid();
 }
 var galleryHTML = '';
 
@@ -128,6 +128,7 @@ function calculate_image_rows(row_width_target, image_height_target) {
   var number_images_in_row = 0;
   var next_i = 0;
   var hackVar = 0;
+  var totalGalleryHeight = 0;
   if (row_width_target < 600) {
     //for small screens
     image_height_target = image_height_target / 2;
@@ -183,8 +184,10 @@ function calculate_image_rows(row_width_target, image_height_target) {
       current_row += 1;
       row_width_sum = 0;
       i = i + next_i;
+      totalGalleryHeight += row_scale * image_height_target + imageGap;
       continue;
     } else if (i == galleryItems.length - 1) {
+      //last (partial) row
       for (j = i - number_images_in_row + 1; j <= i; j++) {
         //console.log(j + ":  " + number_images_in_row);
         //console.log(galleryItems[j].msrc);
@@ -193,8 +196,10 @@ function calculate_image_rows(row_width_target, image_height_target) {
         galleryRowArray[j] = current_row;
         galleryScaleArray[j] = image_height_target;
       }
+      totalGalleryHeight += image_height_target + imageGap;
     }
   }
   //console.log(galleryRowArray);
   //console.log(galleryScaleArray);
+  return totalGalleryHeight;
 }
